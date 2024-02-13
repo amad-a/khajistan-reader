@@ -251,7 +251,7 @@ function getDocument(src) {
   const url = src.url ? getUrlProp(src.url) : null;
   const data = src.data ? getDataProp(src.data) : null;
   const httpHeaders = src.httpHeaders || null;
-  const withCredentials = true;
+  const withCredentials = src.withCredentials === true;
   const password = src.password ?? null;
   const rangeTransport =
     src.range instanceof PDFDataRangeTransport ? src.range : null;
