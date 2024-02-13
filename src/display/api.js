@@ -228,6 +228,8 @@ const DefaultStandardFontDataFactory =
  * @returns {PDFDocumentLoadingTask}
  */
 function getDocument(src) {
+  ////action happenin here
+  console.log("GERT DERC", src);
   if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
     if (typeof src === "string" || src instanceof URL) {
       src = { url: src };
@@ -249,7 +251,7 @@ function getDocument(src) {
   const url = src.url ? getUrlProp(src.url) : null;
   const data = src.data ? getDataProp(src.data) : null;
   const httpHeaders = src.httpHeaders || null;
-  const withCredentials = src.withCredentials === true;
+  const withCredentials = true;
   const password = src.password ?? null;
   const rangeTransport =
     src.range instanceof PDFDataRangeTransport ? src.range : null;

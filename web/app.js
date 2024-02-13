@@ -196,7 +196,7 @@ const PDFViewerApplication = {
       let mode;
       switch (AppOptions.get("viewerCssTheme")) {
         case 1:
-          mode = "is-light";
+          mode = "is-dark";
           break;
         case 2:
           mode = "is-dark";
@@ -584,23 +584,32 @@ const PDFViewerApplication = {
   },
 
   async run(config) {
+ 
+    console.log('decoded', JSON.parse(atob(document.cookie.split('.')[1])))  
+    
     this.preferences = new Preferences();
     await this.initialize(config);
 
     const { appConfig, eventBus } = this;
     let file;
     if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
+      ////action happening here
+      console.log("1");
       const queryString = document.location.search.substring(1);
       const params = parseQueryString(queryString);
+      ////maybe get file from here?
       file = params.get("file") ?? AppOptions.get("defaultUrl");
       validateFileURL(file);
     } else if (PDFJSDev.test("MOZCENTRAL")) {
+      console.log("2");
       file = window.location.href;
     } else if (PDFJSDev.test("CHROME")) {
+      console.log("3");
       file = AppOptions.get("defaultUrl");
     }
 
     if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
+      console.log("4");
       const fileInput = (this._openFileInput = document.createElement("input"));
       fileInput.id = "fileInput";
       fileInput.hidden = true;
@@ -663,6 +672,8 @@ const PDFViewerApplication = {
     }
 
     if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
+      console.log("5");
+      console.log("FILEFLL", file);
       if (file) {
         this.open({ url: file });
       } else {
@@ -969,6 +980,8 @@ const PDFViewerApplication = {
 
     // Set the necessary API parameters, using all the available options.
     const apiParams = AppOptions.getAll(OptionKind.API);
+    ////action happening here
+    console.log("API PARAMS", args, apiParams);
     const loadingTask = getDocument({
       ...apiParams,
       ...args,
@@ -2132,6 +2145,10 @@ if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
     "http://mozilla.github.io",
     "https://mozilla.github.io",
   ];
+
+  const LOCAL_AUTO_DETECT_ORIGIN = window.location.origin;
+  HOSTED_VIEWER_ORIGINS.push(LOCAL_AUTO_DETECT_ORIGIN);
+
   // eslint-disable-next-line no-var
   var validateFileURL = function (file) {
     if (!file) {

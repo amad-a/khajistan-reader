@@ -427,6 +427,7 @@ async function fetchData(url, type = "text") {
   // The Fetch API is not supported.
   return new Promise((resolve, reject) => {
     const request = new XMLHttpRequest();
+    console.log("REQUEST", request);
     request.open("GET", url, /* async = */ true);
     request.responseType = type;
 

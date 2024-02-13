@@ -16,6 +16,8 @@
 "use strict";
 
 var url = location.search.match(/[&?]file=([^&]+)/i);
+console.log("viewer URL", url);
+
 if (url) {
   url = decodeURIComponent(url[1]);
   document.body.textContent = url;

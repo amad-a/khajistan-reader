@@ -206,6 +206,7 @@ function webViewerLoad() {
       document.dispatchEvent(event);
     }
   }
+  console.log('CONFIGGY FIG', config);
   PDFViewerApplication.run(config);
 }
 

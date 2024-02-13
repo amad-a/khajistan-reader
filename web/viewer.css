@@ -145,7 +145,7 @@
 
     --sidebar-narrow-bg-color: rgb(42 42 46 / 0.9);
     --sidebar-toolbar-bg-color: rgb(50 50 52);
-    --toolbar-bg-color: rgb(56 56 61);
+    --toolbar-bg-color: rgb(0, 0, 0);
     --toolbar-border-color: rgb(12 12 13);
     --button-hover-color: rgb(102 102 103);
     --toggled-btn-color: rgb(255 255 255);
@@ -1520,4 +1520,10 @@ dialog :link {
   #scaleSelectContainer {
     display: none;
   }
+}
+
+
+
+#toolbarViewerRight {
+  display:none !important;  
 }

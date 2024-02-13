@@ -19,6 +19,7 @@ limitations under the License.
 var VIEWER_URL = chrome.extension.getURL("content/web/viewer.html");
 
 function getViewerURL(pdf_url) {
+  console.log("viewer URL", pdf_url);
   return VIEWER_URL + "?file=" + encodeURIComponent(pdf_url);
 }
 

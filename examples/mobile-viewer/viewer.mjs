@@ -47,6 +47,8 @@ const PDFViewerApplication = {
    *                      is opened.
    */
   open(params) {
+
+    console.log("OPEN PARAMS", params);
     if (this.pdfLoadingTask) {
       // We need to destroy already opened document
       return this.close().then(

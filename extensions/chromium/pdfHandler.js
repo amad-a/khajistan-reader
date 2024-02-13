@@ -28,6 +28,7 @@ function getViewerURL(pdf_url) {
     hash = pdf_url.slice(i);
     pdf_url = pdf_url.slice(0, i);
   }
+  
   return VIEWER_URL + "?file=" + encodeURIComponent(pdf_url) + hash;
 }
 
